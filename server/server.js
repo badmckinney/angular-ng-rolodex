@@ -28,6 +28,7 @@ app.use(session({
   resave: false,
   saveUninitialized: false
 }));
+app.use(express.static('public'));
 
 const server = app.listen(PORT, () => {
   console.log(`Server is running on PORT ${PORT}`);
