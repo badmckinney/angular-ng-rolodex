@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "dev": "./node_modules/nodemon/bin/nodemon.js ./server/server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
