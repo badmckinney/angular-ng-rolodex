@@ -3,6 +3,8 @@ const session = require('express-session');
 const bodyParser = require('body-parser');
 const redis = require('connect-redis')(session);
 
+const api = require('./routes/api');
+
 const ENV = process.env.NODE_ENV || 'development';
 const PORT = process.env.PORT || 8080;
 const SESSION_SECRET = process.env.SESSION_SECRET || 'charmander';
@@ -29,6 +31,8 @@ app.use(session({
   saveUninitialized: false
 }));
 app.use(express.static('public'));
+
+app.use('/api', api);
 
 const server = app.listen(PORT, () => {
   console.log(`Server is running on PORT ${PORT}`);
