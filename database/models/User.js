@@ -1,11 +1,12 @@
 const bookshelf = require('./bookshelf');
+const Contact = require('./Contact');
 
 class User extends bookshelf.Model {
   get tableName() { return 'users'; }
   get hasTimestamps() { return true; }
   contacts() {
-    return this.hasOne('Contact');
+    return this.hasMany('Contact', 'contacts');
   }
 }
 
-module.exports = bookshelf.Model('User', User);
+module.exports = bookshelf.model('User', User);
