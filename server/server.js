@@ -2,6 +2,7 @@ const express = require('express');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const redis = require('connect-redis')(session);
+const methodOverride = require('method-override');
 
 const api = require('./routes/api');
 
@@ -23,6 +24,7 @@ if (!SESSION_SECRET) {
 
 const app = express();
 
+app.use(methodOverride('_method'));
 app.use(bodyParser.json());
 app.use(session({
   store: new redis({ url: 'redis://redis-server:6379', logErrors: true }),
