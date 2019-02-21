@@ -1,0 +1,16 @@
+<h1>Login</h1>
+<form method="POST" action="/api/login">
+  <div>
+    <label for="username">Username:</label>
+    <input type="text" name="username" [(ngModel)]="formData.username" #username="ngModel" />
+  </div>
+  <div>
+    <label for="password">Password:</label>
+    <input type="password" name="password" [(ngModel)]="formData.password" #password="ngModel" />
+  </div>
+  <input type="submit" value="Login">
+  <div>
+    <p>Don't have an account?</p>
+    <button routerLink="/register">Register</button>
+  </div>
+</form>
