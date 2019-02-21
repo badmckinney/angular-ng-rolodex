@@ -9,7 +9,11 @@ import { AppComponent } from './app/app.component';
 // Page Components
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { HomeComponent } from './pages/home/home.component';
+import { AddContactComponent } from './pages/add-contact/add-contact.component';
 import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
+import { EditContactComponent } from './pages/edit-contact/edit-contact.component';
 
 // Share Components
 import { HeaderComponent } from './shared/header/header.component';
@@ -17,10 +21,14 @@ import { HeaderComponent } from './shared/header/header.component';
 @NgModule({
   declarations: [
     AppComponent,
+    HomeComponent,
     LoginComponent,
     HeaderComponent,
+    ProfileComponent,
     RegisterComponent,
-    EditProfileComponent
+    AddContactComponent,
+    EditProfileComponent,
+    EditContactComponent
   ],
   imports: [
     FormsModule,
