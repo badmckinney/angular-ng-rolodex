@@ -9,7 +9,7 @@ import { AppComponent } from './app/app.component';
 // Page Components
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
-
+import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
 
 // Share Components
 import { HeaderComponent } from './shared/header/header.component';
@@ -19,7 +19,8 @@ import { HeaderComponent } from './shared/header/header.component';
     AppComponent,
     LoginComponent,
     HeaderComponent,
-    RegisterComponent
+    RegisterComponent,
+    EditProfileComponent
   ],
   imports: [
     FormsModule,
