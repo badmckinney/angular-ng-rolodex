@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Contact = require('../../database/models/Contact');
+const User = require('../../database/models/User');
 
 /************************
  *  LOGIN / LOGOUT
@@ -134,7 +135,6 @@ router.post('/contacts', (req, res) => {
     created_by: newContact.created_by
   }).save(null, { method: 'insert' })
     .then((contact) => {
-      console.log(contact);
       return res.json({ contact });
     });
 });
