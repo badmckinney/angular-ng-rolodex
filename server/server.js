@@ -23,6 +23,7 @@ if (!SESSION_SECRET) {
 
 const app = express();
 
+app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(session({
   store: new redis({ url: 'redis://redis-server:6379', logErrors: true }),
@@ -30,7 +31,6 @@ app.use(session({
   resave: false,
   saveUninitialized: false
 }));
-app.use(express.static('public'));
 
 app.use('/api', api);
 
