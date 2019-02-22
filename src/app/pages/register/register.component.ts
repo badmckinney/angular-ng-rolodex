@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { BackendService } from '../../services/backend.service';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   templateUrl: './register.component.html',
@@ -7,7 +8,7 @@ import { BackendService } from '../../services/backend.service';
 })
 
 export class RegisterComponent {
-  formData: {
+  registerFormData: {
     username: string,
     password: string,
     name: string,
@@ -21,5 +22,18 @@ export class RegisterComponent {
       address: ''
     }
 
-  constructor(private backend: BackendService) { }
+  constructor(
+    private auth: AuthService,
+    private router: Router
+  ) { }
+
+  register() {
+    this.auth.register(this.registerFormData)
+      .then(() => {
+        this.router.navigate(['/login']);
+      })
+      .catch((err) => {
+        this.router.navigate(['/register']);
+      });
+  }
 }
