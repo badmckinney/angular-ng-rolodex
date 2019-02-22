@@ -2,7 +2,6 @@ const express = require('express');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const redis = require('connect-redis')(session);
-const methodOverride = require('method-override');
 const passport = require('passport');
 const bcrypt = require('bcryptjs');
 const LocalStrategy = require('passport-local');
@@ -31,7 +30,6 @@ const app = express();
 
 app.use(express.static('public'));
 app.use(bodyParser.json());
-app.use(methodOverride('_method'));
 app.use(session({
   store: new redis({ url: 'redis://redis-server:6379', logErrors: true }),
   secret: SESSION_SECRET,
