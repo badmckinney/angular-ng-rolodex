@@ -4,18 +4,21 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { ContactComponent } from './pages/contact/contact.component';
 import { AddContactComponent } from './pages/add-contact/add-contact.component';
 import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
 import { EditContactComponent } from './pages/edit-contact/edit-contact.component';
+import { AuthGuard } from './guards/auth.guards';
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'home', component: HomeComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'add-contact', component: AddContactComponent },
-  { path: 'edit-profile', component: EditProfileComponent },
-  { path: 'edit-contact', component: EditContactComponent }
+  { path: 'home', canActivate: [AuthGuard], component: HomeComponent },
+  { path: 'profile', canActivate: [AuthGuard], component: ProfileComponent },
+  { path: 'contact', canActivate: [AuthGuard], component: ContactComponent },
+  { path: 'add-contact', canActivate: [AuthGuard], component: AddContactComponent },
+  { path: 'edit-profile', canActivate: [AuthGuard], component: EditProfileComponent },
+  { path: 'edit-contact', canActivate: [AuthGuard], component: EditContactComponent }
 ];
 
 @NgModule({
