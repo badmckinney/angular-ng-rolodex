@@ -11,6 +11,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { HomeComponent } from './pages/home/home.component';
+import { ContactComponent } from './pages/contact/contact.component';
 import { AddContactComponent } from './pages/add-contact/add-contact.component';
 import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
 import { EditContactComponent } from './pages/edit-contact/edit-contact.component';
@@ -25,6 +26,7 @@ import { HeaderComponent } from './shared/header/header.component';
     LoginComponent,
     HeaderComponent,
     ProfileComponent,
+    ContactComponent,
     RegisterComponent,
     AddContactComponent,
     EditProfileComponent,
