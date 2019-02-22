@@ -1,33 +1,42 @@
-<div class="logo"></div>
-<div class="nav">
-  <ul>
-    <li>
-      <h2>
-        <a routerLink="/home">Home</a>
-      </h2>
-    </li>
-    <li>
-      <h2>
-        <a routerLink="">View All Contacts</a>
-      </h2>
-    </li>
-    <li>
-      <h2>
-        <a routerLink="/add-contact">Create Contacts</a>
-      </h2>
-    </li>
-    <li>
-      <h2>
-        <a routerLink="/profile">My Profile</a>
-      </h2>
-    </li>
-    <li>
-      <button routerLink="/login">Login</button>
-    </li>
-    <li>
-      <form method="POST" action="/api/logout">
-        <input type="submit" value="Logout">
-      </form>
-    </li>
-  </ul>
+<div class="header-container">
+  <div class="header-left">
+    <div class="logo"></div>
+    <div class="nav">
+      <ul>
+        <li>
+          <h2>
+            <a routerLink="/home">Home</a>
+          </h2>
+        </li>
+        <li>
+          <h2>
+            <a routerLink="">View All Contacts</a>
+          </h2>
+        </li>
+        <li>
+          <h2>
+            <a routerLink="/add-contact">Create Contacts</a>
+          </h2>
+        </li>
+        <li>
+          <h2>
+            <a routerLink="/profile">My Profile</a>
+          </h2>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="header-right">
+    <div class="logged-in" *ngIf="isLoggedIn()">
+      Welcome, {{ user.username }}!
+      <button (click)="logout()">
+        Logout
+      </button>
+    </div>
+    <div class="logged-out" *ngIf="!user.loggedIn">
+      <button (click)="login()">
+        Login
+      </button>
+    </div>
+  </div>
 </div>
