@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { BackendService } from '../../services/backend.service';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   templateUrl: './login.component.html',
@@ -7,13 +8,32 @@ import { BackendService } from '../../services/backend.service';
 })
 
 export class LoginComponent {
-  formData: {
+  loginFormData: {
     username: string,
     password: string
   } = {
       username: '',
       password: ''
-    }
+    };
 
-  constructor(private backend: BackendService) { }
+  constructor(
+    private auth: AuthService,
+    private router: Router
+  ) { }
+
+  login() {
+    this.auth.login(this.loginFormData)
+      .then(() => {
+        const redirectUrl = this.auth.redirectUrl;
+        if (redirectUrl) {
+          this.router.navigate([redirectUrl]);
+          this.auth.redirectUrl = '';
+        } else {
+          this.router.navigate(['/']);
+        }
+      })
+      .catch((err) => {
+        this.router.navigate(['/login']);
+      });
+  }
 }
