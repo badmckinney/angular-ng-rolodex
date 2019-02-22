@@ -1,7 +1,12 @@
 const express = require('express');
 const router = express.Router();
+const passport = require('passport');
+const bcrypt = require('bcryptjs');
+
 const Contact = require('../../database/models/Contact');
 const User = require('../../database/models/User');
+
+saltRounds = 12;
 
 /************************
  *  LOGIN / LOGOUT
@@ -30,9 +35,9 @@ router.post('/register', (req, res) => {
           return new User({
             username: req.body.username,
             password: hash,
-            first_name: req.body.first_name,
-            last_name: req.body.last_name,
-            email: req.body.email
+            name: req.body.name,
+            email: req.body.email,
+            address: req.body.address
           })
             .save()
             .then((user) => {
@@ -47,13 +52,13 @@ router.post('/register', (req, res) => {
     });
 });
 
-router.post('/login', (req, res) => {
+router.post('/login', passport.authenticate('local'), (req, res) => {
   return res.json({ success: true });
 });
 
 router.post('/logout', (req, res) => {
   req.logout();
-  return res.json({});
+  return res.json({ success: true });
 });
 
 /************************
