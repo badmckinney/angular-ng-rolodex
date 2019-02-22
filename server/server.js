@@ -24,15 +24,15 @@ if (!SESSION_SECRET) {
 
 const app = express();
 
-app.use(methodOverride('_method'));
+app.use(express.static('public'));
 app.use(bodyParser.json());
+app.use(methodOverride('_method'));
 app.use(session({
   store: new redis({ url: 'redis://redis-server:6379', logErrors: true }),
   secret: SESSION_SECRET,
   resave: false,
   saveUninitialized: false
 }));
-app.use(express.static('public'));
 
 app.use('/api', api);
 
