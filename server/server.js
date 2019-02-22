@@ -3,6 +3,11 @@ const session = require('express-session');
 const bodyParser = require('body-parser');
 const redis = require('connect-redis')(session);
 const methodOverride = require('method-override');
+const passport = require('passport');
+const bcrypt = require('bcryptjs');
+const LocalStrategy = require('passport-local');
+
+const User = require('../database/models/User');
 
 const api = require('./routes/api');
 
@@ -32,6 +37,58 @@ app.use(session({
   secret: SESSION_SECRET,
   resave: false,
   saveUninitialized: false
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.serializeUser((user, done) => {
+  return done(null, {
+    id: user.id
+  });
+});
+
+passport.deserializeUser((user, done) => {
+  new User({ id: user.id }).fetch()
+    .then(dbUser => {
+      if (dbUser === null) {
+        return done();
+      }
+      dbUser = dbUser.toJSON();
+      return done(null, {
+        id: dbUser.id,
+      });
+    })
+    .catch((err) => {
+      return done(err);
+    });
+});
+
+passport.use(new LocalStrategy(function (username, password, done) {
+  return new User({ username: username }).fetch()
+    .then(dbUser => {
+      if (dbUser === null) {
+        console.log('hit 1');
+        return done(null, false);
+      }
+      else {
+        dbUser = dbUser.toJSON();
+        bcrypt.compare(password, dbUser.password)
+          .then((res) => {
+            if (res) {
+              console.log('hit 2');
+              return done(null, dbUser);
+            } else {
+              console.log('hit 3');
+              return done(null, false);
+            }
+          });
+      }
+    })
+    .catch(err => {
+      console.log('hit 4');
+      return done(err);
+    });
 }));
 
 app.use('/api', api);
