@@ -68,7 +68,6 @@ passport.use(new LocalStrategy(function (username, password, done) {
   return new User({ username: username }).fetch()
     .then(dbUser => {
       if (dbUser === null) {
-        console.log('hit 1');
         return done(null, false);
       }
       else {
@@ -76,17 +75,14 @@ passport.use(new LocalStrategy(function (username, password, done) {
         bcrypt.compare(password, dbUser.password)
           .then((res) => {
             if (res) {
-              console.log('hit 2');
               return done(null, dbUser);
             } else {
-              console.log('hit 3');
               return done(null, false);
             }
           });
       }
     })
     .catch(err => {
-      console.log('hit 4');
       return done(err);
     });
 }));
