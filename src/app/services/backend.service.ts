@@ -36,5 +36,9 @@ export class BackendService {
   getContacts() {
     return this.http.get('/api/contacts').toPromise();
   }
+
+  editProfile(profileData) {
+    return this.http.put('/api/users', profileData).toPromise();
+  }
 }
 
