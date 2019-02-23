@@ -50,10 +50,8 @@ export class ContactComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.pageData.id);
     this.backend.openContact(this.pageData.id)
       .then((data) => {
-        console.log(data);
         for (var key in data) {
           this.pageData[key] = data[key];
         }
