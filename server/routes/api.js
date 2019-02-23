@@ -173,29 +173,22 @@ router.put('/contacts/:id', (req, res) => {
   const id = req.params.id;
   const newData = req.body;
 
-  Contact.where({ id: id })
+  new Contact({ id: id })
+    .save({
+      name: newData.name,
+      address: newData.address,
+      mobile: newData.mobile,
+      work: newData.work,
+      home: newData.home,
+      email: newData.email,
+      twitter: newData.twitter,
+      instagram: newData.instagram,
+      github: newData.github,
+    }, { patch: true })
     .then((contact) => {
-      if (contact.attributes.created_by !== req.user.id) {
-        return res.json({ success: false });
-      }
-
-      new Contact({ id: id })
-        .save({
-          name: newData.name,
-          address: newData.address,
-          mobile: newData.mobile,
-          work: newData.work,
-          home: newData.home,
-          email: newData.email,
-          twitter: newData.twitter,
-          instagram: newData.instagram,
-          github: newData.github,
-        }, { patch: true })
-        .then((contact) => {
-          return res.json({ contact });
-        });
+      return res.json({ contact });
     });
-})
+});
 
 
 /************************

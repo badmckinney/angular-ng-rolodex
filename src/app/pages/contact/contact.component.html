@@ -13,7 +13,7 @@
   <p class="github">GitHub: {{pageData.github}}</p>
   <p class="updated">Last updated: {{pageData.updated_at}}</p>
   <div class="buttons">
-    <button routerLink="/edit-contact">Edit</button>
+    <button routerLink="/edit-contact/{{pageData.id}}">Edit</button>
     <button (click)="deleteContact(pageData.id)">Delete</button>
   </div>
 </div>

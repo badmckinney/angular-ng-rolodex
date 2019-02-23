@@ -48,5 +48,9 @@ export class BackendService {
   openContact(id) {
     return this.http.get(`/api/contacts/${id}`).toPromise();
   }
+
+  editContact(id, contact) {
+    return this.http.put(`/api/contacts/${id}`, contact).toPromise();
+  }
 }
 

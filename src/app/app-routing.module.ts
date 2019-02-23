@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'contacts', canActivate: [AuthGuard], component: ContactsComponent },
   { path: 'add-contact', canActivate: [AuthGuard], component: AddContactComponent },
   { path: 'edit-profile', canActivate: [AuthGuard], component: EditProfileComponent },
-  { path: 'edit-contact', canActivate: [AuthGuard], component: EditContactComponent }
+  { path: 'edit-contact/:id', canActivate: [AuthGuard], component: EditContactComponent }
 ];
 
 @NgModule({
