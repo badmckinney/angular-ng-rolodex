@@ -8,10 +8,12 @@ import { TouchSequence } from 'selenium-webdriver';
 export class SessionService {
   user: {
     loggedIn: boolean,
-    username: string
+    username: string,
+    id: number
   } = {
       loggedIn: false,
-      username: ''
+      username: '',
+      id: 0
     };
 
   constructor(
@@ -23,11 +25,13 @@ export class SessionService {
       else {
         this.user.loggedIn = false;
         this.user.username = '';
+        this.user.id = 0;
       }
     } catch (err) {
       window.localStorage.removeItem('user');
       this.user.loggedIn = false;
       this.user.username = '';
+      this.user.id = 0;
     }
   }
 
@@ -37,6 +41,7 @@ export class SessionService {
 
   setSession(user) {
     this.user.username = user.username;
+    this.user.id = user.id;
     this.user.loggedIn = true;
 
     let userString = JSON.stringify(this.user);
@@ -46,6 +51,7 @@ export class SessionService {
   clearSession() {
     this.user.loggedIn = false;
     this.user.username = '';
+    this.user.id = 0;
     window.localStorage.removeItem('user');
   }
 
