@@ -28,5 +28,9 @@ export class BackendService {
     const user = this.session.getSession();
     return this.http.get(`/api/profile?user=${user.id}`).toPromise();
   }
+
+  addContact(contact) {
+    return this.http.post('/api/contacts', contact).toPromise();
+  }
 }
 
