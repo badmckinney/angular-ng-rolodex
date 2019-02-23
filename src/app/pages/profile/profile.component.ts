@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BackendService } from '../../services/backend.service';
 
 @Component({
   selector: 'app-profile',
@@ -23,7 +24,14 @@ export class ProfileComponent implements OnInit {
       address: ''
     }
 
-  constructor() { }
+  constructor(private backend: BackendService) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.backend.getProfile()
+      .then((data) => {
+        for (var key in data) {
+          this.pageData[key] = data[key];
+        }
+      });
+  }
 }
