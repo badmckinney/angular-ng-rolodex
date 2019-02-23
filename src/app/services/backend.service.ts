@@ -52,5 +52,9 @@ export class BackendService {
   editContact(id, contact) {
     return this.http.put(`/api/contacts/${id}`, contact).toPromise();
   }
+
+  filterContacts(term) {
+    return this.http.get(`/api/contacts/search/${term}`).toPromise();
+  }
 }
 

@@ -95,7 +95,7 @@ router.get('/contacts', (req, res) => {
 });
 
 router.get('/contacts/search/:term', (req, res) => {
-  let id = req.query.user;
+  let id = req.user.id;
   let query = req.params.term;
 
   Contact.query(function (qb) {
@@ -110,7 +110,7 @@ router.get('/contacts/search/:term', (req, res) => {
       })
   }).fetchAll()
     .then((contacts) => {
-      return res.json({ contacts });
+      return res.json(contacts);
     });
 });
 

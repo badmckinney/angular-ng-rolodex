@@ -1,15 +1,41 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { BackendService } from '../../services/backend.service';
+import { Router } from '@angular/router';
+import { IfStmt } from '@angular/compiler';
 
 @Component({
-  selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
 
+  searchTerm = ''
   pageData = [];
 
-  constructor() { }
+  constructor(
+    private backend: BackendService,
+    private router: Router
+  ) { }
 
-  ngOnInit() { }
+  deleteContact(id) {
+    this.backend.deleteContact(id)
+      .then(() => {
+        this.router.navigate(['/contacts']);
+      });
+  }
+
+  openContact(id) {
+    this.backend.openContact(id);
+  }
+
+  filterContacts() {
+    if (!this.searchTerm) {
+      return this.pageData = [];
+    }
+
+    this.backend.filterContacts(this.searchTerm)
+      .then((data: Array<Object>) => {
+        this.pageData = data;
+      });
+  }
 }
