@@ -26,7 +26,6 @@ export class BackendService {
 
   getProfile() {
     const user = this.session.getSession();
-    console.log(user);
     return this.http.get(`/api/profile?user=${user.id}`).toPromise();
   }
 }
