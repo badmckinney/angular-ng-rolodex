@@ -1,0 +1,29 @@
+<div class="contacts-container">
+  <ul>
+    <div *ngFor="let contact of pageData">
+      <li class="contact-item">
+        <div class="contact">
+          <div>
+            <h2 class="name">{{contact.name}}</h2>
+            <p class="created">created {{contact.created_at}}</p>
+          </div>
+          <p class="address">Address: {{contact.address}}</p>
+          <p class="mobile">Mobile: {{contact.mobile}}</p>
+          <p class="work">Work: {{contact.work}}</p>
+          <p class="home">Home: {{contact.home}}</p>
+          <p class="email">Email: {{contact.email}}</p>
+          <p class="twitter">Twitter: {{contact.twitter}}</p>
+          <p class="instagram">Instagram: {{contact.instagram}}</p>
+          <p class="github">GitHub: {{contact.github}}</p>
+          <p class="updated">Last updated: {{contact.updated_at}}</p>
+          <div class="buttons">
+            <button routerLink="/edit-contact">Edit</button>
+            <form method="POST" action="/api/contacts/{{id}}?_method=DELETE">
+              <input type="submit" value="Delete" />
+            </form>
+          </div>
+        </div>
+      </li>
+    </div>
+  </ul>
+</div>
