@@ -205,18 +205,11 @@ router.put('/contacts/:id', (req, res) => {
 router.delete('/contacts/:id', (req, res) => {
   const id = req.params.id
 
-  Contact.where({ id: id }).fetch()
-    .then((contact) => {
-      if (contact.attributes.created_by !== req.user.id) {
-        return res.json({ success: false });
-      }
-
-      new Contact({ id: id })
-        .destroy()
-        .then(() => {
-          res.status(200);
-          res.json({ success: true });
-        });
+  new Contact({ id: id })
+    .destroy()
+    .then(() => {
+      res.status(200);
+      res.json({ success: true });
     });
 });
 

@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'home', canActivate: [AuthGuard], component: HomeComponent },
   { path: 'profile', canActivate: [AuthGuard], component: ProfileComponent },
-  { path: 'contact', canActivate: [AuthGuard], component: ContactComponent },
+  { path: 'contact/:id', canActivate: [AuthGuard], component: ContactComponent },
   { path: 'contacts', canActivate: [AuthGuard], component: ContactsComponent },
   { path: 'add-contact', canActivate: [AuthGuard], component: AddContactComponent },
   { path: 'edit-profile', canActivate: [AuthGuard], component: EditProfileComponent },

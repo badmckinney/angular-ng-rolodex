@@ -40,5 +40,13 @@ export class BackendService {
   editProfile(profileData) {
     return this.http.put('/api/users', profileData).toPromise();
   }
+
+  deleteContact(id) {
+    return this.http.delete(`/api/contacts/${id}`).toPromise();
+  }
+
+  openContact(id) {
+    return this.http.get(`/api/contacts/${id}`).toPromise();
+  }
 }
 
