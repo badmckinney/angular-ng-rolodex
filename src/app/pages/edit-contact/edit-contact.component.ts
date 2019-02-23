@@ -58,7 +58,6 @@ export class EditContactComponent implements OnInit {
   ngOnInit() {
     this.backend.openContact(this.editContactFormData.id)
       .then((data) => {
-        console.log(data);
         for (var key in data) {
           this.editContactFormData[key] = data[key];
         }
