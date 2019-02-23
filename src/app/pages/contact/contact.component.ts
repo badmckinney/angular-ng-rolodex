@@ -43,15 +43,17 @@ export class ContactComponent implements OnInit {
   ) {
     router.events.forEach((e) => {
       if (e instanceof NavigationEnd) {
-        this.pageData.id = e.id;
+        this.pageData.id = parseInt(e.url.slice(9));
       }
     });
     this.pageData.id = 0;
   }
 
   ngOnInit() {
+    console.log(this.pageData.id);
     this.backend.openContact(this.pageData.id)
       .then((data) => {
+        console.log(data);
         for (var key in data) {
           this.pageData[key] = data[key];
         }
