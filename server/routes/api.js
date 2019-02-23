@@ -154,10 +154,10 @@ router.post('/contacts', (req, res) => {
 ************************/
 
 router.put('/users', (req, res) => {
-  const id = req.query.id;
+  const id = req.user.id;
   const user = req.body;
 
-  new User({ id: id }).fetch()
+  User.where({ id: id })
     .save({
       username: user.username,
       name: user.name,
@@ -173,7 +173,7 @@ router.put('/contacts/:id', (req, res) => {
   const id = req.params.id;
   const newData = req.body;
 
-  Contact.where({ id: id }).fetch()
+  Contact.where({ id: id })
     .then((contact) => {
       if (contact.attributes.created_by !== req.user.id) {
         return res.json({ success: false });
