@@ -86,11 +86,11 @@ router.get('/profile', (req, res) => {
 });
 
 router.get('/contacts', (req, res) => {
-  let id = req.query.user;
+  let id = req.user.id;
   Contact.where({ created_by: id }).fetchAll()
     .then((contacts) => {
       contacts = contacts.models;
-      return res.json({ contacts: contacts });
+      return res.json(contacts);
     });
 });
 

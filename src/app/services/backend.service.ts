@@ -32,5 +32,9 @@ export class BackendService {
   addContact(contact) {
     return this.http.post('/api/contacts', contact).toPromise();
   }
+
+  getContacts() {
+    return this.http.get('/api/contacts').toPromise();
+  }
 }
 
