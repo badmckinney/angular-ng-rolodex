@@ -53,7 +53,10 @@ router.post('/register', (req, res) => {
 });
 
 router.post('/login', passport.authenticate('local'), (req, res) => {
-  return res.json({ success: true });
+  return res.json({
+    id: req.user.id,
+    username: req.user.username
+  });
 });
 
 router.post('/logout', (req, res) => {
@@ -72,6 +75,8 @@ router.get('/profile', (req, res) => {
       user = user.attributes;
       const profile = {
         username: user.username,
+        created_at: user.created_at,
+        updated_at: user.updated_at,
         name: user.name,
         address: user.address,
         email: user.email

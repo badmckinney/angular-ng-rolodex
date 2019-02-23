@@ -42,7 +42,8 @@ app.use(passport.session());
 
 passport.serializeUser((user, done) => {
   return done(null, {
-    id: user.id
+    id: user.id,
+    username: user.username
   });
 });
 
@@ -55,6 +56,7 @@ passport.deserializeUser((user, done) => {
       dbUser = dbUser.toJSON();
       return done(null, {
         id: dbUser.id,
+        username: dbUser.username
       });
     })
     .catch((err) => {
