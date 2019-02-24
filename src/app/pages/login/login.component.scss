@@ -1,0 +1,93 @@
+$body-font: 'Rubik', sans-serif;
+$logo-font:'Days One', sans-serif;
+
+.login-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    font-family: $logo-font;
+    color: #0984e3;
+    align-self: center;
+  }
+
+  .login {
+    border: 10px solid #777;
+    width: 40%;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1em 2em 1em 2em;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    border-radius: 20px;
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 95%;
+
+      .field {
+        font-family: $body-font;
+        margin-bottom: 0.8em;
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+  
+        input {
+          height: 2.5em;
+          padding-left: 0.7em; 
+          font-size: 1em;
+          color: #424242;
+        }
+      }
+  
+      button {
+        align-self: center;
+        background: #0984e3;
+        color: #fff;
+        border: none;
+        border-radius: 15px;
+        height: 30px;
+        width: 100px;
+        font-size: 0.8em;
+        font-family: $body-font;
+        transition: background-color 0.25s ease-in-out;
+      }
+
+      button:hover {
+        background: lighten(#0984e3, 20%);
+      }
+
+      .bottom {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-top: 2em;
+        font-family: $body-font;
+
+
+        p {
+          margin-right: 0em;
+        }
+
+        button {
+          color: #0984e3;
+          background: transparent;
+          font-size: 1em;
+          padding: 0;
+          width: 30%;
+          transition: color 0.25s ease-in-out;
+        }
+
+        button:hover {
+          color: lighten(#0984e3, 20%);
+        }
+      }
+    }
+  }
+}

@@ -1,40 +1,44 @@
-<h1>Edit Contact</h1>
-<form>
-  <div>
-    <label for="name">Name:</label>
-    <input type="text" name="name" [(ngModel)]="editContactFormData.name" />
+<div class="edit-contact-form">
+  <div class="form">
+    <h1>Edit Contact</h1>
+    <form>
+      <div class="field">
+        <label for="name">Name:</label>
+        <input type="text" name="name" [(ngModel)]="editContactFormData.name" />
+      </div>
+      <div class="field">
+        <label for="address">Address:</label>
+        <input type="text" name="Address" [(ngModel)]="editContactFormData.address" />
+      </div>
+      <div class="field">
+        <label for="mobile">Mobile:</label>
+        <input type="text" name="mobile" [(ngModel)]="editContactFormData.mobile" />
+      </div>
+      <div class="field">
+        <label for="work">Work:</label>
+        <input type="text" name="work" [(ngModel)]="editContactFormData.work" />
+      </div>
+      <div class="field">
+        <label for="home">Home:</label>
+        <input type="text" name="home" [(ngModel)]="editContactFormData.home" />
+      </div>
+      <div class="field">
+        <label for="email">Email:</label>
+        <input type="text" name="email" [(ngModel)]="editContactFormData.email" />
+      </div>
+      <div class="field">
+        <label for="twitter">Twitter:</label>
+        <input type="text" name="twitter" [(ngModel)]="editContactFormData.twitter" />
+      </div>
+      <div class="field">
+        <label for="instagram">Instagram:</label>
+        <input type="text" name="instagram" [(ngModel)]="editContactFormData.instagram" />
+      </div>
+      <div class="field">
+        <label for="github">GitHub:</label>
+        <input type="text" name="github" [(ngModel)]="editContactFormData.github" />
+      </div>
+      <button (click)="editContact()">Submit</button>
+    </form>
   </div>
-  <div>
-    <label for="address">Address:</label>
-    <input type="text" name="Address" [(ngModel)]="editContactFormData.address" />
-  </div>
-  <div>
-    <label for="mobile">Mobile:</label>
-    <input type="text" name="mobile" [(ngModel)]="editContactFormData.mobile" />
-  </div>
-  <div>
-    <label for="work">Work:</label>
-    <input type="text" name="work" [(ngModel)]="editContactFormData.work" />
-  </div>
-  <div>
-    <label for="home">Home:</label>
-    <input type="text" name="home" [(ngModel)]="editContactFormData.home" />
-  </div>
-  <div>
-    <label for="email">Email:</label>
-    <input type="text" name="email" [(ngModel)]="editContactFormData.email" />
-  </div>
-  <div>
-    <label for="twitter">Twitter:</label>
-    <input type="text" name="twitter" [(ngModel)]="editContactFormData.twitter" />
-  </div>
-  <div>
-    <label for="instagram">Instagram:</label>
-    <input type="text" name="instagram" [(ngModel)]="editContactFormData.instagram" />
-  </div>
-  <div>
-    <label for="github">GitHub:</label>
-    <input type="text" name="github" [(ngModel)]="editContactFormData.github" />
-  </div>
-  <button (click)="editContact()">Submit</button>
-</form>
+</div>

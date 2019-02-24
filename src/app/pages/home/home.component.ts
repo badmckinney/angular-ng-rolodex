@@ -36,6 +36,10 @@ export class HomeComponent {
     this.backend.filterContacts(this.searchTerm)
       .then((data: Array<Object>) => {
         this.pageData = data;
+        this.pageData.forEach(contact => {
+          contact.created_at = new Date(contact.created_at).toLocaleDateString();
+          contact.updated_at = new Date(contact.updated_at).toLocaleDateString();
+        });
       });
   }
 }

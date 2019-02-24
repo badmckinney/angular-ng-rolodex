@@ -18,7 +18,7 @@ export class ContactsComponent implements OnInit {
   deleteContact(id) {
     this.backend.deleteContact(id)
       .then(() => {
-        this.router.navigate(['/contacts']);
+        this.ngOnInit();
       });
   }
 
@@ -30,6 +30,10 @@ export class ContactsComponent implements OnInit {
     this.backend.getContacts()
       .then((data: Array<Object>) => {
         this.pageData = data;
+        this.pageData.forEach(contact => {
+          contact.created_at = new Date(contact.created_at).toLocaleDateString();
+          contact.updated_at = new Date(contact.updated_at).toLocaleDateString();
+        });
       });
   }
 }

@@ -1,6 +1,6 @@
 <div class="header-container">
   <div class="header-left">
-    <div class="logo"></div>
+    <div class="logo">ROLODEX</div>
     <div class="nav">
       <ul>
         <li>
@@ -28,7 +28,7 @@
   </div>
   <div class="header-right">
     <div class="logged-in" *ngIf="isLoggedIn()">
-      Welcome, {{ user.username }}!
+      Welcome, <span id="user">{{ user.username }}</span>!
       <button (click)="logout()">
         Logout
       </button>

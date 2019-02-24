@@ -1,19 +1,21 @@
-<div class="contact">
-  <div>
-    <h2 class="name">{{pageData.name}}</h2>
-    <p class="created">created {{pageData.created_at}}</p>
-  </div>
-  <p class="address">Address: {{pageData.address}}</p>
-  <p class="mobile">Mobile: {{pageData.mobile}}</p>
-  <p class="work">Work: {{pageData.work}}</p>
-  <p class="home">Home: {{pageData.home}}</p>
-  <p class="email">Email: {{pageData.email}}</p>
-  <p class="twitter">Twitter: {{pageData.twitter}}</p>
-  <p class="instagram">Instagram: {{pageData.instagram}}</p>
-  <p class="github">GitHub: {{pageData.github}}</p>
-  <p class="updated">Last updated: {{pageData.updated_at}}</p>
-  <div class="buttons">
-    <button routerLink="/edit-contact/{{pageData.id}}">Edit</button>
-    <button (click)="deleteContact(pageData.id)">Delete</button>
+<div class="contact-container">
+  <div class="contact">
+    <div class="top">
+      <h2 class="name">{{pageData.name}}</h2>
+      <p class="created">created {{pageData.created_at}}</p>
+    </div>
+    <p class="address">Address: {{pageData.address}}</p>
+    <p class="mobile">Mobile: {{pageData.mobile}}</p>
+    <p class="work">Work: {{pageData.work}}</p>
+    <p class="home">Home: {{pageData.home}}</p>
+    <p class="email">Email: {{pageData.email}}</p>
+    <p class="twitter">Twitter: {{pageData.twitter}}</p>
+    <p class="instagram">Instagram: {{pageData.instagram}}</p>
+    <p class="github">GitHub: {{pageData.github}}</p>
+    <p class="updated">Last updated: {{pageData.updated_at}}</p>
+    <div class="buttons">
+      <button routerLink="/edit-contact/{{pageData.id}}">Edit</button>
+      <button (click)="deleteContact(pageData.id)">Delete</button>
+    </div>
   </div>
 </div>

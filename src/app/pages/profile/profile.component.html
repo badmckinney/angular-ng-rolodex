@@ -1,12 +1,14 @@
-<h1>My profile</h1>
-<div class="profile">
-  <div>
-    <h2 class="username">{{pageData.username}}</h2>
-    <p class="member">Member since: {{pageData.created_at}}</p>
+<div class="profile-container">
+  <h1>My profile</h1>
+  <div class="profile">
+    <div class="top">
+      <h2 class="username">{{pageData.username}}</h2>
+      <p class="member">Member since: {{pageData.created_at}}</p>
+    </div>
+    <p class="name">Name: {{pageData.name}}</p>
+    <p class="address">Address: {{pageData.address}}</p>
+    <p class="email">Email: {{pageData.email}}</p>
+    <p class="updated">Last updated: {{pageData.updated_at}}</p>
+    <button routerLink="/edit-profile">Edit Profile</button>
   </div>
-  <p class="name">Name: {{pageData.name}}</p>
-  <p class="address">Address: {{pageData.address}}</p>
-  <p class="email">Email: {{pageData.email}}</p>
-  <p class="updated">Last updated: {{pageData.updated_at}}</p>
-  <button routerLink="/edit-profile">Edit Profile</button>
 </div>

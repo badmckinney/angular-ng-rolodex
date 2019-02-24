@@ -49,10 +49,21 @@ export class ContactComponent implements OnInit {
     this.pageData.id = 0;
   }
 
+  deleteContact(id) {
+    this.backend.deleteContact(id)
+      .then(() => {
+        this.router.navigate(['/contacts']);
+      });
+  }
+
   ngOnInit() {
     this.backend.openContact(this.pageData.id)
       .then((data) => {
         for (var key in data) {
+          if (key === 'created_at' || key === 'updated_at') {
+            data[key] = new Date(data[key]).toLocaleDateString();
+            this.pageData[key] = data[key];
+          }
           this.pageData[key] = data[key];
         }
       });
