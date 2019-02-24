@@ -43,7 +43,7 @@ export class AddContactComponent implements OnInit {
   addContact() {
     return this.backend.addContact(this.addContactFormData)
       .then(() => {
-        this.router.navigate(['/add-contact']);
+        this.router.navigate(['/contacts']);
         for (var key in this.addContactFormData) {
           if (key !== "created_by") {
             this.addContactFormData[key] = '';
